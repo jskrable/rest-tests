@@ -1,7 +1,7 @@
-# restTest.py
+# rest_test.py
 # author: Jack Skrable
 # date: 03/22/18
-# desc: executes rest call and writes to file
+# desc: executes rest GET and writes to file
 
 import requests
 import json
