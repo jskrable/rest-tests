@@ -10,9 +10,19 @@ import os
 def main():
 
 	# url to hit on REST get
-	url = 'https://elastic.snaplogic.com:443/api/1/rest/slsched/feed/BUDev/Admin-Research-Systems/getPersonnelData/getADPersonnel_triggered_task'
-	# any headers to include with the request
-	headers = {'Authorization': 'Bearer GHkJ0X0cb2RBbnXF3xPJiTLf35j8KmEL'}
+	url = input("Enter the URL endpoint: ")
+	
+	# any headers to include with the request?
+	head = input("Are there any headers to include? (Y/n)")
+	if (head == 'Y' or head == 'y'):
+		# is it an auth token?
+		auth = input("Auth token? (Y/n)")
+		if (auth == 'Y' or auth == 'y'):
+			field = 'Authorization'
+			value = input("Enter token value: ")
+				
+	# create dict
+	headers = {field: value}
 	
 	# get output file
 	filename = input("Enter the output file name: ") + ".json"
