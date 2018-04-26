@@ -14,10 +14,10 @@ def main():
 	
 	# any headers to include with the request?
 	head = input("Are there any headers to include? (Y/n)")
-	if (head == 'Y' or head == 'y'):
+	if head.lower() in ('y','yes'):
 		# is it an auth token?
 		auth = input("Auth token? (Y/n)")
-		if (auth == 'Y' or auth == 'y'):
+		if auth.lower() in ('y','yes'):
 			field = 'Authorization'
 			value = input("Enter token value: ")
 				
