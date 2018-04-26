@@ -19,7 +19,7 @@ def main():
 		auth = input("Auth token? (Y/n)")
 		if auth.lower() in ('y','yes'):
 			field = 'Authorization'
-			value = input("Enter token value: ")
+			value = 'Bearer ' + input("Enter token value: ")
 				
 	# create header dict
 	headers = {field: value}
@@ -28,10 +28,21 @@ def main():
 	filename = input("Enter the output file name: ") + ".json"
 	
 	# show user we're working
-	print("Executing...")
+	print("Sending request...")
 	
 	# execute get and store in response
 	response = requests.get(url, headers = headers)
+	
+	while not str(response.status_code):
+		counter = 0
+		if counter == 1:
+			print("/rExecuting.")
+		elif counter == 2:
+			print("/rExecuting..")
+		elif counter == 3:
+			print("/rExecuting...")
+			counter = 0
+		counter+=1
 	
 	# print response status code
 	print("Status Code: " + str(response.status_code))
