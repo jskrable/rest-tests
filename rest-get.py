@@ -21,7 +21,7 @@ def main():
 			field = 'Authorization'
 			value = input("Enter token value: ")
 				
-	# create dict
+	# create header dict
 	headers = {field: value}
 	
 	# get output file
