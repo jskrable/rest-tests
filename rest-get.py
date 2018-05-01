@@ -16,14 +16,13 @@ def main():
 	head = input("Are there any headers to include? (Y/n)")
 	if head.lower() in ('y','yes'):
 		# is it an auth token?
-		raw = input("Enter raw header? (Y/n)")
-		if raw.lower() in ('y','yes'):
-			headers = input("Enter headers: ")
 		auth = input("Auth token? (Y/n)")
-		if auth.lower() in ('y','yes'):     
+		if auth.lower() in ('y','yes'):
 			field = 'Authorization'
 			value = 'Bearer ' + input("Enter token value: ")
-			headers = {field: value}
+				
+	# create header dict
+	headers = {field: value}
 	
 	# get output file
 	filename = input("Enter the output file name: ") + ".json"
