@@ -6,6 +6,19 @@
 import requests
 import json
 import os
+import thread
+
+def(working):
+	while not str(response.status_code):
+	counter = 0
+	if counter == 1:
+		print("/rExecuting.")
+	elif counter == 2:
+		print("/rExecuting..")
+	elif counter == 3:
+		print("/rExecuting...")
+		counter = 0
+	counter+=1
 
 def main():
 
@@ -20,6 +33,7 @@ def main():
 		if auth.lower() in ('y','yes'):
 			field = 'Authorization'
 			value = 'Bearer ' + input("Enter token value: ")
+		elif headers = {input("Enter raw headers: ")}
 				
 	# create header dict
 	headers = {field: value}
@@ -30,9 +44,8 @@ def main():
 	# show user we're working
 	print("Sending request...")
 	
-	# execute get and store in response
-	response = requests.get(url, headers = headers)
-	
+	# init response
+	thread.start_new_thread(
 	while not str(response.status_code):
 		counter = 0
 		if counter == 1:
@@ -43,6 +56,9 @@ def main():
 			print("/rExecuting...")
 			counter = 0
 		counter+=1
+	
+	# execute get and store in response
+	response = requests.get(url, headers = headers)
 	
 	# print response status code
 	print("Status Code: " + str(response.status_code))
