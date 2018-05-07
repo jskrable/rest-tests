@@ -7,23 +7,28 @@ import requests
 import json
 import os
 import threading
+from time import sleep
 
 
 def working(status):
 
+	counter = 0
 	while not status:
-		counter = 0
 		if counter == 0 :
-			print("Executing", end='/r')
+			print("Executing", end='\r')
+			sleep(0.5)
 			counter+=1
 		elif counter == 1:
-			print("/rExecuting.", end='/r')
+			print("Executing.", end='\r')
+			sleep(0.5)
 			counter+=1
 		elif counter == 2:
-			print("/rExecuting..", end='/r')
+			print("Executing..", end='\r')
+			sleep(0.5)
 			counter+=1
 		elif counter == 3:
-			print("/rExecuting...", end='/r')
+			print("Executing...", end='\r')
+			sleep(0.5)
 			counter = 0		
 	
 	return
