@@ -6,19 +6,28 @@
 import requests
 import json
 import os
-import thread
+import threading
 
-def(working):
-	while not str(response.status_code):
-	counter = 0
-	if counter == 1:
-		print("/rExecuting.")
-	elif counter == 2:
-		print("/rExecuting..")
-	elif counter == 3:
-		print("/rExecuting...")
+
+def working(status):
+
+	while not status:
 		counter = 0
-	counter+=1
+		if counter == 0 :
+			print("Executing", end='/r')
+			counter+=1
+		elif counter == 1:
+			print("/rExecuting.", end='/r')
+			counter+=1
+		elif counter == 2:
+			print("/rExecuting..", end='/r')
+			counter+=1
+		elif counter == 3:
+			print("/rExecuting...", end='/r')
+			counter = 0		
+	
+	return
+
 
 def main():
 
@@ -33,7 +42,7 @@ def main():
 		if auth.lower() in ('y','yes'):
 			field = 'Authorization'
 			value = 'Bearer ' + input("Enter token value: ")
-		elif headers = {input("Enter raw headers: ")}
+		# elif headers = {input("Enter raw headers: ")}
 				
 	# create header dict
 	headers = {field: value}
@@ -45,20 +54,16 @@ def main():
 	print("Sending request...")
 	
 	# init response
-	thread.start_new_thread(
-	while not str(response.status_code):
-		counter = 0
-		if counter == 1:
-			print("/rExecuting.")
-		elif counter == 2:
-			print("/rExecuting..")
-		elif counter == 3:
-			print("/rExecuting...")
-			counter = 0
-		counter+=1
+	status = False
+	
+	# start working animation in new thread
+	w = threading.Thread(target=working, args=(status,))
+	w.setDaemon(True)
+	w.start()
 	
 	# execute get and store in response
 	response = requests.get(url, headers = headers)
+	status = True
 	
 	# print response status code
 	print("Status Code: " + str(response.status_code))
