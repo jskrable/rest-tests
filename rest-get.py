@@ -9,14 +9,19 @@ import os
 import threading
 from time import sleep
 
-
+# function to display animation while working
+# takes process status boolean
 def working(status):
 
 	counter = 0
+	# loop while status is false
 	while not status:
-		if counter == 0 :
+		if counter == 0:
+			# print executing, overwriting line
 			print("Executing", end='\r')
+			# wait half second
 			sleep(0.5)
+			# increment counter
 			counter+=1
 		elif counter == 1:
 			print("Executing.", end='\r')
@@ -26,10 +31,10 @@ def working(status):
 			print("Executing..", end='\r')
 			sleep(0.5)
 			counter+=1
-		elif counter == 3:
+		else:
 			print("Executing...", end='\r')
 			sleep(0.5)
-			counter = 0		
+			counter = 0
 	
 	return
 
@@ -55,12 +60,8 @@ def main():
 	# get output file
 	filename = input("Enter the output file name: ") + ".json"
 	
-	# show user we're working
-	print("Sending request...")
-	
 	# init response
 	status = False
-	
 	# start working animation in new thread
 	w = threading.Thread(target=working, args=(status,))
 	w.setDaemon(True)
